@@ -98,6 +98,16 @@ function initializeApp() {
 
     // Add fade-in animations to sections
     const sections = document.querySelectorAll('section');
+    
+    // Show sign-up popup on page load (with a slight delay for better UX)
+    setTimeout(() => {
+        // Check if user has already signed up (stored in localStorage)
+        const userData = localStorage.getItem('userData');
+        const dontShowAgain = localStorage.getItem('dontShowSignup');
+        if (!userData && !dontShowAgain) {
+            openSignUp();
+        }
+    }, 1000);
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
@@ -270,6 +280,12 @@ function openSignUp() {
 function closeSignUp() {
     const signupModal = document.getElementById('signup-modal');
     if (signupModal) {
+        // Check if "Don't show again" is checked
+        const dontShowAgain = document.getElementById('dont-show-again');
+        if (dontShowAgain && dontShowAgain.checked) {
+            localStorage.setItem('dontShowSignup', 'true');
+        }
+        
         signupModal.classList.add('hidden');
         document.body.style.overflow = '';
         // Clear form
@@ -290,6 +306,12 @@ function clearSignUpForm() {
         form.querySelector('select').value = '';
         document.getElementById('signup-status').innerHTML = '';
         document.getElementById('signup-status').className = 'signup-status';
+        
+        // Also clear the "Don't show again" checkbox
+        const dontShowAgain = document.getElementById('dont-show-again');
+        if (dontShowAgain) {
+            dontShowAgain.checked = false;
+        }
     }
 }
 
