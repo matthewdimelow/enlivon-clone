@@ -142,6 +142,18 @@ function setupEventListeners() {
             }
         });
     }
+
+    // Admin login form event listeners
+    const adminUsername = document.getElementById('admin-username');
+    const adminPassword = document.getElementById('admin-password');
+    
+    if (adminUsername) {
+        adminUsername.addEventListener('keypress', handleLoginKeyPress);
+    }
+    
+    if (adminPassword) {
+        adminPassword.addEventListener('keypress', handleLoginKeyPress);
+    }
 }
 
 // Start live stats updates
@@ -182,12 +194,109 @@ function hostShow() {
     }
 }
 
+// Admin Login Functions
+function openAdminLogin() {
+    const adminLogin = document.getElementById('admin-login');
+    if (adminLogin) {
+        adminLogin.classList.remove('hidden');
+        document.body.style.overflow = 'hidden';
+        // Focus on username field
+        document.getElementById('admin-username').focus();
+    }
+}
+
+function closeAdminLogin() {
+    const adminLogin = document.getElementById('admin-login');
+    if (adminLogin) {
+        adminLogin.classList.add('hidden');
+        document.body.style.overflow = '';
+        // Clear form
+        document.getElementById('admin-username').value = '';
+        document.getElementById('admin-password').value = '';
+        document.getElementById('login-status').innerHTML = '';
+        document.getElementById('login-status').className = 'login-status';
+    }
+}
+
+function loginAdmin() {
+    const username = document.getElementById('admin-username').value.trim();
+    const password = document.getElementById('admin-password').value.trim();
+    const loginStatus = document.getElementById('login-status');
+    
+    // Simple authentication (in a real app, this would be server-side)
+    if (username === 'admin' && password === 'goldenballs2024') {
+        loginStatus.innerHTML = '<i class="fas fa-check-circle"></i> Login successful! Redirecting...';
+        loginStatus.className = 'login-status success';
+        
+        // Close login modal and open dashboard after a short delay
+        setTimeout(() => {
+            closeAdminLogin();
+            hostShow();
+        }, 1000);
+    } else {
+        loginStatus.innerHTML = '<i class="fas fa-exclamation-circle"></i> Invalid username or password';
+        loginStatus.className = 'login-status error';
+        
+        // Clear password field
+        document.getElementById('admin-password').value = '';
+        document.getElementById('admin-password').focus();
+    }
+}
+
+// Handle Enter key in login form
+function handleLoginKeyPress(event) {
+    if (event.key === 'Enter') {
+        loginAdmin();
+    }
+}
+
 // Join a specific show
 function joinSpecificShow(gameType) {
-    const gameInterface = document.getElementById('game-interface');
-    if (gameInterface) {
-        gameInterface.classList.remove('hidden');
-        startGame(gameType);
+    console.log(`Joining ${gameType} show`);
+    
+    if (gameType === 'youtube-stream') {
+        // Open the YouTube video in a new tab/window
+        window.open('https://www.youtube.com/watch?v=IdDmWfBW9GU', '_blank');
+        
+        // Show a notification
+        showNotification('Opening YouTube Golden Balls stream in new tab!', 'success');
+        
+        // Update the hero section to show the stream is active
+        const heroVisual = document.querySelector('.hero-visual');
+        if (heroVisual) {
+            heroVisual.innerHTML = `
+                <div class="live-stream-container">
+                    <div class="video-wrapper">
+                        <iframe 
+                            src="https://www.youtube.com/embed/IdDmWfBW9GU?autoplay=1&mute=1&controls=1&modestbranding=1&rel=0&showinfo=0" 
+                            frameborder="0" 
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                            allowfullscreen>
+                        </iframe>
+                    </div>
+                    <div class="stream-stats">
+                        <div class="stat">
+                            <span class="number">3,247</span>
+                            <span class="label">Live Viewers</span>
+                        </div>
+                        <div class="stat">
+                            <span class="number">£2,000</span>
+                            <span class="label">Current Prize</span>
+                        </div>
+                        <div class="stat">
+                            <span class="number">89</span>
+                            <span class="label">Active Players</span>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+    } else {
+        const gameInterface = document.getElementById('game-interface');
+        if (gameInterface) {
+            gameInterface.classList.remove('hidden');
+            startGame(gameType);
+        }
     }
 }
 
@@ -713,6 +822,10 @@ function saveSettings() {
 // Export functions for global access
 window.joinShow = joinShow;
 window.hostShow = hostShow;
+window.openAdminLogin = openAdminLogin;
+window.closeAdminLogin = closeAdminLogin;
+window.loginAdmin = loginAdmin;
+window.handleLoginKeyPress = handleLoginKeyPress;
 window.joinSpecificShow = joinSpecificShow;
 window.closeGame = closeGame;
 window.sendMessage = sendMessage;

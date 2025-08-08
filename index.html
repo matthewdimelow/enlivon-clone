@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Golden Balls - Live Interactive Game Show</title>
+    <title>LiveGamePlatform - Golden Balls Live Interactive Game Show</title>
     <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
@@ -41,19 +41,37 @@
                 </div>
             </div>
             <div class="hero-visual">
-                <div class="game-show-preview">
-                    <div class="live-indicator">
-                        <span class="pulse"></span>
-                        LIVE
+                <div class="live-stream-container">
+                    <div class="video-wrapper">
+                        <iframe 
+                            src="https://www.youtube.com/embed/IdDmWfBW9GU?autoplay=1&mute=1&controls=0&modestbranding=1&rel=0&showinfo=0" 
+                            frameborder="0" 
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                            allowfullscreen>
+                        </iframe>
+                        <div class="live-overlay">
+                            <div class="live-indicator">
+                                <span class="pulse"></span>
+                                LIVE NOW
+                            </div>
+                            <div class="stream-info">
+                                <h3>Golden Balls Live Stream</h3>
+                                <p>Watch the action unfold in real-time!</p>
+                            </div>
+                        </div>
                     </div>
-                    <div class="show-stats">
+                    <div class="stream-stats">
                         <div class="stat">
-                            <span class="number">1,247</span>
-                            <span class="label">Players Online</span>
+                            <span class="number">2,847</span>
+                            <span class="label">Live Viewers</span>
                         </div>
                         <div class="stat">
-                            <span class="number">5</span>
-                            <span class="label">Active Shows</span>
+                            <span class="number">£1,500</span>
+                            <span class="label">Current Prize</span>
+                        </div>
+                        <div class="stat">
+                            <span class="number">156</span>
+                            <span class="label">Active Players</span>
                         </div>
                     </div>
                 </div>
@@ -74,14 +92,14 @@
                 <div class="show-card active">
                     <div class="show-header">
                         <div class="live-badge">LIVE</div>
-                        <h3>Golden Balls Classic</h3>
-                        <p>Traditional UK Format</p>
+                        <h3>Golden Balls Live Stream</h3>
+                        <p>Watch the YouTube Stream</p>
                     </div>
                     <div class="show-stats">
-                        <span><i class="fas fa-users"></i> 342 players</span>
-                        <span><i class="fas fa-trophy"></i> £500 prize</span>
+                        <span><i class="fas fa-users"></i> 2,847 viewers</span>
+                        <span><i class="fas fa-trophy"></i> £1,500 prize</span>
                     </div>
-                    <button class="join-btn" onclick="joinSpecificShow('classic')">Join Now</button>
+                    <button class="join-btn" onclick="joinSpecificShow('youtube-stream')">Watch Live</button>
                 </div>
                 
                 <div class="show-card">
@@ -336,13 +354,46 @@
                 <p>&copy; 2024 Golden Balls. All rights reserved.</p>
                 <!-- Hidden Admin Access - Only for authorized users -->
                 <div class="admin-access" style="position: absolute; bottom: 5px; right: 5px; opacity: 0.1; transition: opacity 0.3s ease;">
-                    <button class="admin-btn" onclick="hostShow()" style="background: none; border: none; color: #6366f1; font-size: 10px; cursor: pointer; padding: 2px 4px;">
+                    <button class="admin-btn" onclick="openAdminLogin()">
                         ADMIN
                     </button>
                 </div>
             </div>
         </div>
     </footer>
+
+    <!-- Admin Login Modal -->
+    <div id="admin-login" class="admin-login hidden">
+        <div class="login-container">
+            <div class="login-header">
+                <h2>Admin Access</h2>
+                <button class="close-login" onclick="closeAdminLogin()">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="login-content">
+                <div class="login-form">
+                    <div class="form-group">
+                        <label for="admin-username">Username</label>
+                        <input type="text" id="admin-username" placeholder="Enter username" />
+                    </div>
+                    <div class="form-group">
+                        <label for="admin-password">Password</label>
+                        <input type="password" id="admin-password" placeholder="Enter password" />
+                    </div>
+                    <div class="login-actions">
+                        <button class="btn-primary" onclick="loginAdmin()">
+                            <i class="fas fa-sign-in-alt"></i> Login
+                        </button>
+                        <button class="btn-secondary" onclick="closeAdminLogin()">
+                            Cancel
+                        </button>
+                    </div>
+                    <div class="login-status" id="login-status"></div>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- Host Dashboard Modal -->
     <div id="host-dashboard" class="host-dashboard hidden">
