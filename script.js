@@ -175,7 +175,11 @@ function joinShow() {
 
 // Host a show
 function hostShow() {
-    alert('Host functionality coming soon! This would open the host dashboard.');
+    const hostDashboard = document.getElementById('host-dashboard');
+    if (hostDashboard) {
+        hostDashboard.classList.remove('hidden');
+        document.body.style.overflow = 'hidden'; // Prevent background scrolling
+    }
 }
 
 // Join a specific show
@@ -634,6 +638,78 @@ const notificationStyle = document.createElement('style');
 notificationStyle.textContent = notificationCSS;
 document.head.appendChild(notificationStyle);
 
+// Host Dashboard Functions
+function closeHostDashboard() {
+    const hostDashboard = document.getElementById('host-dashboard');
+    if (hostDashboard) {
+        hostDashboard.classList.add('hidden');
+        document.body.style.overflow = ''; // Restore scrolling
+    }
+}
+
+function showDashboardSection(sectionId) {
+    // Hide all sections
+    const sections = document.querySelectorAll('.dashboard-section');
+    sections.forEach(section => section.classList.remove('active'));
+    
+    // Show selected section
+    const targetSection = document.getElementById(sectionId);
+    if (targetSection) {
+        targetSection.classList.add('active');
+    }
+    
+    // Update navigation
+    const navItems = document.querySelectorAll('.nav-item');
+    navItems.forEach(item => item.classList.remove('active'));
+    
+    const activeNavItem = document.querySelector(`[onclick="showDashboardSection('${sectionId}')"]`);
+    if (activeNavItem) {
+        activeNavItem.classList.add('active');
+    }
+}
+
+function controlShow(action) {
+    if (action === 'pause') {
+        showNotification('Show paused', 'info');
+    } else if (action === 'end') {
+        showNotification('Show ended', 'info');
+    }
+}
+
+function editShow() {
+    showNotification('Edit show functionality coming soon', 'info');
+}
+
+function cancelShow() {
+    if (confirm('Are you sure you want to cancel this show?')) {
+        showNotification('Show cancelled', 'success');
+    }
+}
+
+function createNewShow() {
+    showNotification('Create new show functionality coming soon', 'info');
+}
+
+function viewShow(showType) {
+    showNotification(`Viewing ${showType} show`, 'info');
+}
+
+function duplicateShow() {
+    showNotification('Show duplicated', 'success');
+}
+
+function previousMonth() {
+    showNotification('Previous month', 'info');
+}
+
+function nextMonth() {
+    showNotification('Next month', 'info');
+}
+
+function saveSettings() {
+    showNotification('Settings saved successfully', 'success');
+}
+
 // Export functions for global access
 window.joinShow = joinShow;
 window.hostShow = hostShow;
@@ -642,3 +718,14 @@ window.closeGame = closeGame;
 window.sendMessage = sendMessage;
 window.becomeHost = becomeHost;
 window.selectAnswer = selectAnswer;
+window.closeHostDashboard = closeHostDashboard;
+window.showDashboardSection = showDashboardSection;
+window.controlShow = controlShow;
+window.editShow = editShow;
+window.cancelShow = cancelShow;
+window.createNewShow = createNewShow;
+window.viewShow = viewShow;
+window.duplicateShow = duplicateShow;
+window.previousMonth = previousMonth;
+window.nextMonth = nextMonth;
+window.saveSettings = saveSettings;
