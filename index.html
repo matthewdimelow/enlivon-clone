@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LiveGameShow - Interactive Live Game Shows</title>
+    <title>Golden Balls - Live Interactive Game Show</title>
     <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
@@ -13,13 +13,12 @@
     <nav class="navbar">
         <div class="nav-container">
             <div class="nav-logo">
-                <h2>LiveGameShow</h2>
+                <h2>Golden Balls</h2>
             </div>
             <ul class="nav-menu">
                 <li><a href="#home">Home</a></li>
                 <li><a href="#shows">Live Shows</a></li>
                 <li><a href="#games">Games</a></li>
-                <li><a href="#host">Host</a></li>
                 <li><a href="#about">About</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
@@ -35,11 +34,10 @@
     <section id="home" class="hero">
         <div class="hero-content">
             <div class="hero-text">
-                <h1>Experience Live Interactive Game Shows</h1>
-                <p>Join thousands of players in real-time interactive game shows. Compete, win prizes, and have fun with hosts and fellow players from around the world.</p>
+                <h1>Welcome to Golden Balls</h1>
+                <p>Experience the thrill of the UK's most exciting game show! Join live interactive sessions where contestants compete for golden balls and big prizes. Trust, split, or steal - the choice is yours!</p>
                 <div class="hero-buttons">
                     <button class="btn-primary" onclick="joinShow()">Join Live Show</button>
-                    <button class="btn-secondary" onclick="hostShow()">Host a Show</button>
                 </div>
             </div>
             <div class="hero-visual">
@@ -71,45 +69,45 @@
     <!-- Live Shows Section -->
     <section id="shows" class="live-shows">
         <div class="container">
-            <h2>Live Shows Now</h2>
+            <h2>Live Golden Balls Shows</h2>
             <div class="shows-grid">
                 <div class="show-card active">
                     <div class="show-header">
                         <div class="live-badge">LIVE</div>
-                        <h3>Trivia Night</h3>
-                        <p>General Knowledge Quiz</p>
+                        <h3>Golden Balls Classic</h3>
+                        <p>Traditional UK Format</p>
                     </div>
                     <div class="show-stats">
                         <span><i class="fas fa-users"></i> 342 players</span>
-                        <span><i class="fas fa-trophy"></i> $500 prize</span>
+                        <span><i class="fas fa-trophy"></i> £500 prize</span>
                     </div>
-                    <button class="join-btn" onclick="joinSpecificShow('trivia')">Join Now</button>
+                    <button class="join-btn" onclick="joinSpecificShow('classic')">Join Now</button>
                 </div>
                 
                 <div class="show-card">
                     <div class="show-header">
                         <div class="live-badge">LIVE</div>
-                        <h3>Word Master</h3>
-                        <p>Word Association Game</p>
+                        <h3>Golden Balls Speed</h3>
+                        <p>Quick Fire Rounds</p>
                     </div>
                     <div class="show-stats">
                         <span><i class="fas fa-users"></i> 189 players</span>
-                        <span><i class="fas fa-trophy"></i> $300 prize</span>
+                        <span><i class="fas fa-trophy"></i> £300 prize</span>
                     </div>
-                    <button class="join-btn" onclick="joinSpecificShow('word')">Join Now</button>
+                    <button class="join-btn" onclick="joinSpecificShow('speed')">Join Now</button>
                 </div>
                 
                 <div class="show-card">
                     <div class="show-header">
                         <div class="live-badge">LIVE</div>
-                        <h3>Math Challenge</h3>
-                        <p>Quick Math Puzzles</p>
+                        <h3>Golden Balls Elite</h3>
+                        <p>High Stakes Edition</p>
                     </div>
                     <div class="show-stats">
                         <span><i class="fas fa-users"></i> 156 players</span>
-                        <span><i class="fas fa-trophy"></i> $200 prize</span>
+                        <span><i class="fas fa-trophy"></i> £1000 prize</span>
                     </div>
-                    <button class="join-btn" onclick="joinSpecificShow('math')">Join Now</button>
+                    <button class="join-btn" onclick="joinSpecificShow('elite')">Join Now</button>
                 </div>
             </div>
         </div>
@@ -120,7 +118,7 @@
         <div class="game-container">
             <div class="game-header">
                 <div class="game-info">
-                    <h2 id="game-title">Trivia Night</h2>
+                    <h2 id="game-title">Golden Balls Classic</h2>
                     <div class="game-stats">
                         <span><i class="fas fa-users"></i> <span id="player-count">342</span> players</span>
                         <span><i class="fas fa-clock"></i> <span id="time-left">30</span>s</span>
@@ -133,12 +131,11 @@
             
             <div class="game-content">
                 <div class="question-area">
-                    <h3 id="current-question">What is the capital of France?</h3>
+                    <h3 id="current-question">Choose your action: Trust, Split, or Steal?</h3>
                     <div class="options-grid">
-                        <button class="option-btn" onclick="selectAnswer('A')">A) London</button>
-                        <button class="option-btn" onclick="selectAnswer('B')">B) Paris</button>
-                        <button class="option-btn" onclick="selectAnswer('C')">C) Berlin</button>
-                        <button class="option-btn" onclick="selectAnswer('D')">D) Madrid</button>
+                        <button class="option-btn" onclick="selectAnswer('trust')">Trust</button>
+                        <button class="option-btn" onclick="selectAnswer('split')">Split</button>
+                        <button class="option-btn" onclick="selectAnswer('steal')">Steal</button>
                     </div>
                 </div>
                 
@@ -148,17 +145,17 @@
                         <div class="leaderboard-item">
                             <span class="rank">1</span>
                             <span class="player">Player123</span>
-                            <span class="score">850 pts</span>
+                            <span class="score">£850</span>
                         </div>
                         <div class="leaderboard-item">
                             <span class="rank">2</span>
-                            <span class="player">QuizMaster</span>
-                            <span class="score">720 pts</span>
+                            <span class="player">GoldenWinner</span>
+                            <span class="score">£720</span>
                         </div>
                         <div class="leaderboard-item">
                             <span class="rank">3</span>
-                            <span class="player">BrainBox</span>
-                            <span class="score">680 pts</span>
+                            <span class="player">BallMaster</span>
+                            <span class="score">£680</span>
                         </div>
                     </div>
                 </div>
@@ -171,11 +168,11 @@
                 <div class="chat-messages" id="chat-messages">
                     <div class="chat-message">
                         <span class="username">Host:</span>
-                        <span class="message">Welcome everyone! Let's get started!</span>
+                        <span class="message">Welcome to Golden Balls! Trust, split, or steal - what will you choose?</span>
                     </div>
                     <div class="chat-message">
                         <span class="username">Player123:</span>
-                        <span class="message">Ready to win! 🏆</span>
+                        <span class="message">I'm going to trust! 🤝</span>
                     </div>
                 </div>
                 <div class="chat-input">
@@ -189,110 +186,58 @@
     <!-- Games Section -->
     <section id="games" class="games">
         <div class="container">
-            <h2>Available Games</h2>
+            <h2>Golden Balls Game Modes</h2>
             <div class="games-grid">
                 <div class="game-card">
                     <div class="game-icon">
-                        <i class="fas fa-question-circle"></i>
+                        <i class="fas fa-crown"></i>
                     </div>
-                    <h3>Trivia</h3>
-                    <p>Test your knowledge across various categories</p>
+                    <h3>Classic Mode</h3>
+                    <p>The original UK format with trust, split, and steal mechanics</p>
                     <ul>
-                        <li>Multiple choice questions</li>
-                        <li>Real-time scoring</li>
-                        <li>Prize pools up to $1000</li>
+                        <li>Traditional gameplay</li>
+                        <li>Trust your partner</li>
+                        <li>Split the prize or steal it all</li>
                     </ul>
                 </div>
                 
                 <div class="game-card">
                     <div class="game-icon">
-                        <i class="fas fa-font"></i>
+                        <i class="fas fa-bolt"></i>
                     </div>
-                    <h3>Word Master</h3>
-                    <p>Word association and vocabulary challenges</p>
+                    <h3>Speed Mode</h3>
+                    <p>Quick-fire rounds with rapid decision making</p>
                     <ul>
-                        <li>Word puzzles</li>
-                        <li>Anagram challenges</li>
-                        <li>Vocabulary building</li>
+                        <li>Fast-paced gameplay</li>
+                        <li>Quick decisions</li>
+                        <li>Multiple rounds</li>
                     </ul>
                 </div>
                 
                 <div class="game-card">
                     <div class="game-icon">
-                        <i class="fas fa-calculator"></i>
+                        <i class="fas fa-gem"></i>
                     </div>
-                    <h3>Math Challenge</h3>
-                    <p>Quick mental math and logic puzzles</p>
+                    <h3>Elite Mode</h3>
+                    <p>High-stakes games with bigger prizes</p>
                     <ul>
-                        <li>Mental arithmetic</li>
-                        <li>Logic problems</li>
-                        <li>Speed challenges</li>
+                        <li>Larger prize pools</li>
+                        <li>Advanced strategies</li>
+                        <li>VIP experience</li>
                     </ul>
                 </div>
                 
                 <div class="game-card">
                     <div class="game-icon">
-                        <i class="fas fa-puzzle-piece"></i>
+                        <i class="fas fa-users"></i>
                     </div>
-                    <h3>Puzzle Master</h3>
-                    <p>Visual and logic puzzle challenges</p>
+                    <h3>Team Mode</h3>
+                    <p>Play with friends in team competitions</p>
                     <ul>
-                        <li>Visual puzzles</li>
-                        <li>Logic problems</li>
-                        <li>Pattern recognition</li>
+                        <li>Team coordination</li>
+                        <li>Group strategies</li>
+                        <li>Shared rewards</li>
                     </ul>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Host Section -->
-    <section id="host" class="host-section">
-        <div class="container">
-            <h2>Host Your Own Show</h2>
-            <div class="host-content">
-                <div class="host-info">
-                    <h3>Become a Game Show Host</h3>
-                    <p>Create and host your own interactive game shows. Engage with audiences worldwide and earn money while having fun.</p>
-                    <div class="host-features">
-                        <div class="feature">
-                            <i class="fas fa-broadcast-tower"></i>
-                            <h4>Live Streaming</h4>
-                            <p>Stream your shows in HD quality</p>
-                        </div>
-                        <div class="feature">
-                            <i class="fas fa-users"></i>
-                            <h4>Audience Management</h4>
-                            <p>Manage thousands of participants</p>
-                        </div>
-                        <div class="feature">
-                            <i class="fas fa-dollar-sign"></i>
-                            <h4>Monetization</h4>
-                            <p>Earn from ticket sales and sponsorships</p>
-                        </div>
-                    </div>
-                    <button class="btn-primary" onclick="becomeHost()">Become a Host</button>
-                </div>
-                <div class="host-visual">
-                    <div class="host-dashboard-preview">
-                        <div class="dashboard-header">
-                            <h4>Host Dashboard</h4>
-                        </div>
-                        <div class="dashboard-content">
-                            <div class="metric">
-                                <span class="metric-value">1,247</span>
-                                <span class="metric-label">Viewers</span>
-                            </div>
-                            <div class="metric">
-                                <span class="metric-value">$2,450</span>
-                                <span class="metric-label">Revenue</span>
-                            </div>
-                            <div class="metric">
-                                <span class="metric-value">4.8★</span>
-                                <span class="metric-label">Rating</span>
-                            </div>
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>
@@ -301,10 +246,10 @@
     <!-- About Section -->
     <section id="about" class="about">
         <div class="container">
-            <h2>About LiveGameShow</h2>
+            <h2>About Golden Balls</h2>
             <div class="about-content">
                 <div class="about-text">
-                    <p>LiveGameShow is the premier platform for interactive live game shows. We connect hosts with audiences worldwide, creating engaging entertainment experiences that bring people together through fun and competition.</p>
+                    <p>Golden Balls is the ultimate interactive game show experience, inspired by the classic UK television format. Players must decide whether to trust their partner, split the prize, or steal it all. Every decision matters in this thrilling game of strategy and psychology.</p>
                     <div class="stats">
                         <div class="stat">
                             <span class="number">50,000+</span>
@@ -315,7 +260,7 @@
                             <span class="label">Shows Hosted</span>
                         </div>
                         <div class="stat">
-                            <span class="number">$500K+</span>
+                            <span class="number">£500K+</span>
                             <span class="label">Prizes Awarded</span>
                         </div>
                     </div>
@@ -333,15 +278,15 @@
                     <h3>Contact Us</h3>
                     <div class="contact-item">
                         <i class="fas fa-envelope"></i>
-                        <span>support@livegameshow.com</span>
+                        <span>support@goldenballs.com</span>
                     </div>
                     <div class="contact-item">
                         <i class="fas fa-phone"></i>
-                        <span>+1 (555) 123-4567</span>
+                        <span>+44 (0) 20 1234 5678</span>
                     </div>
                     <div class="contact-item">
                         <i class="fas fa-map-marker-alt"></i>
-                        <span>123 Game Street, Entertainment City</span>
+                        <span>123 Game Street, London, UK</span>
                     </div>
                 </div>
                 <form class="contact-form">
@@ -359,8 +304,8 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-section">
-                    <h3>LiveGameShow</h3>
-                    <p>Connecting the world through interactive entertainment.</p>
+                    <h3>Golden Balls</h3>
+                    <p>Trust, split, or steal - the ultimate game of strategy.</p>
                     <div class="social-links">
                         <a href="#"><i class="fab fa-facebook"></i></a>
                         <a href="#"><i class="fab fa-twitter"></i></a>
@@ -374,7 +319,7 @@
                         <li><a href="#home">Home</a></li>
                         <li><a href="#shows">Live Shows</a></li>
                         <li><a href="#games">Games</a></li>
-                        <li><a href="#host">Host</a></li>
+                        <li><a href="#about">About</a></li>
                     </ul>
                 </div>
                 <div class="footer-section">
@@ -388,7 +333,13 @@
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2024 LiveGameShow. All rights reserved.</p>
+                <p>&copy; 2024 Golden Balls. All rights reserved.</p>
+                <!-- Hidden Admin Access - Only for authorized users -->
+                <div class="admin-access" style="position: absolute; bottom: 5px; right: 5px; opacity: 0.1; transition: opacity 0.3s ease;">
+                    <button class="admin-btn" onclick="hostShow()" style="background: none; border: none; color: #6366f1; font-size: 10px; cursor: pointer; padding: 2px 4px;">
+                        ADMIN
+                    </button>
+                </div>
             </div>
         </div>
     </footer>
@@ -397,7 +348,7 @@
     <div id="host-dashboard" class="host-dashboard hidden">
         <div class="dashboard-container">
             <div class="dashboard-header">
-                <h2>Host Dashboard</h2>
+                <h2>Golden Balls Host Dashboard</h2>
                 <button class="close-dashboard" onclick="closeHostDashboard()">
                     <i class="fas fa-times"></i>
                 </button>
@@ -409,7 +360,7 @@
                         <div class="profile-avatar">
                             <i class="fas fa-user"></i>
                         </div>
-                        <h3>Host Name</h3>
+                        <h3>Golden Balls Host</h3>
                         <p>Professional Game Show Host</p>
                         <div class="host-stats">
                             <div class="stat">
@@ -417,7 +368,7 @@
                                 <span class="label">Total Viewers</span>
                             </div>
                             <div class="stat">
-                                <span class="number">$2,450</span>
+                                <span class="number">£2,450</span>
                                 <span class="label">Revenue</span>
                             </div>
                             <div class="stat">
@@ -462,7 +413,7 @@
                                     <span class="status live">LIVE</span>
                                 </div>
                                 <div class="card-content">
-                                    <h5>Trivia Night</h5>
+                                    <h5>Golden Balls Classic</h5>
                                     <p>342 active players</p>
                                     <div class="show-controls">
                                         <button class="btn-control" onclick="controlShow('pause')">
@@ -481,7 +432,7 @@
                                     <span class="status scheduled">SCHEDULED</span>
                                 </div>
                                 <div class="card-content">
-                                    <h5>Word Master</h5>
+                                    <h5>Golden Balls Speed</h5>
                                     <p>Tomorrow at 8:00 PM</p>
                                     <div class="show-controls">
                                         <button class="btn-control" onclick="editShow()">
@@ -502,7 +453,7 @@
                                     <div class="quick-stats">
                                         <div class="stat-item">
                                             <span class="label">Today's Revenue</span>
-                                            <span class="value">$450</span>
+                                            <span class="value">£450</span>
                                         </div>
                                         <div class="stat-item">
                                             <span class="label">Total Shows</span>
@@ -522,11 +473,11 @@
                             <div class="activity-list">
                                 <div class="activity-item">
                                     <i class="fas fa-play"></i>
-                                    <span>Started "Trivia Night" - 15 minutes ago</span>
+                                    <span>Started "Golden Balls Classic" - 15 minutes ago</span>
                                 </div>
                                 <div class="activity-item">
                                     <i class="fas fa-dollar-sign"></i>
-                                    <span>Earned $150 from "Word Master" - 2 hours ago</span>
+                                    <span>Earned £150 from "Golden Balls Speed" - 2 hours ago</span>
                                 </div>
                                 <div class="activity-item">
                                     <i class="fas fa-star"></i>
@@ -542,20 +493,20 @@
                     
                     <!-- Shows Section -->
                     <div id="shows" class="dashboard-section">
-                        <h3>My Shows</h3>
+                        <h3>My Golden Balls Shows</h3>
                         <div class="shows-list">
                             <div class="show-item">
                                 <div class="show-info">
-                                    <h4>Trivia Night</h4>
-                                    <p>General Knowledge Quiz</p>
+                                    <h4>Golden Balls Classic</h4>
+                                    <p>Traditional UK Format</p>
                                     <span class="show-status live">LIVE NOW</span>
                                 </div>
                                 <div class="show-stats">
                                     <span>342 players</span>
-                                    <span>$500 prize</span>
+                                    <span>£500 prize</span>
                                 </div>
                                 <div class="show-actions">
-                                    <button class="btn-action" onclick="viewShow('trivia')">
+                                    <button class="btn-action" onclick="viewShow('classic')">
                                         <i class="fas fa-eye"></i> View
                                     </button>
                                     <button class="btn-action" onclick="editShow()">
@@ -566,13 +517,13 @@
                             
                             <div class="show-item">
                                 <div class="show-info">
-                                    <h4>Word Master</h4>
-                                    <p>Word Association Game</p>
+                                    <h4>Golden Balls Speed</h4>
+                                    <p>Quick Fire Rounds</p>
                                     <span class="show-status scheduled">SCHEDULED</span>
                                 </div>
                                 <div class="show-stats">
                                     <span>Tomorrow 8:00 PM</span>
-                                    <span>$300 prize</span>
+                                    <span>£300 prize</span>
                                 </div>
                                 <div class="show-actions">
                                     <button class="btn-action" onclick="editShow()">
@@ -586,16 +537,16 @@
                             
                             <div class="show-item">
                                 <div class="show-info">
-                                    <h4>Math Challenge</h4>
-                                    <p>Quick Math Puzzles</p>
+                                    <h4>Golden Balls Elite</h4>
+                                    <p>High Stakes Edition</p>
                                     <span class="show-status completed">COMPLETED</span>
                                 </div>
                                 <div class="show-stats">
                                     <span>156 players</span>
-                                    <span>$200 prize</span>
+                                    <span>£1000 prize</span>
                                 </div>
                                 <div class="show-actions">
-                                    <button class="btn-action" onclick="viewShow('math')">
+                                    <button class="btn-action" onclick="viewShow('elite')">
                                         <i class="fas fa-eye"></i> View
                                     </button>
                                     <button class="btn-action" onclick="duplicateShow()">
@@ -644,8 +595,8 @@
                                         <span class="time">8:00 PM</span>
                                     </div>
                                     <div class="show-details">
-                                        <h5>Trivia Night</h5>
-                                        <p>General Knowledge Quiz</p>
+                                        <h5>Golden Balls Classic</h5>
+                                        <p>Traditional UK Format</p>
                                     </div>
                                     <button class="btn-edit" onclick="editShow()">
                                         <i class="fas fa-edit"></i>
@@ -658,8 +609,8 @@
                                         <span class="time">7:30 PM</span>
                                     </div>
                                     <div class="show-details">
-                                        <h5>Word Master</h5>
-                                        <p>Word Association Game</p>
+                                        <h5>Golden Balls Speed</h5>
+                                        <p>Quick Fire Rounds</p>
                                     </div>
                                     <button class="btn-edit" onclick="editShow()">
                                         <i class="fas fa-edit"></i>
@@ -675,17 +626,17 @@
                         <div class="earnings-overview">
                             <div class="earnings-card">
                                 <h4>This Month</h4>
-                                <span class="amount">$2,450</span>
+                                <span class="amount">£2,450</span>
                                 <span class="change positive">+15% from last month</span>
                             </div>
                             <div class="earnings-card">
                                 <h4>Total Earnings</h4>
-                                <span class="amount">$12,800</span>
+                                <span class="amount">£12,800</span>
                                 <span class="change positive">+23% from last year</span>
                             </div>
                             <div class="earnings-card">
                                 <h4>Next Payout</h4>
-                                <span class="amount">$450</span>
+                                <span class="amount">£450</span>
                                 <span class="change">Dec 31, 2024</span>
                             </div>
                         </div>
@@ -695,19 +646,19 @@
                             <div class="chart-container">
                                 <div class="chart-bar" style="height: 60%">
                                     <span class="bar-label">Jan</span>
-                                    <span class="bar-value">$800</span>
+                                    <span class="bar-value">£800</span>
                                 </div>
                                 <div class="chart-bar" style="height: 80%">
                                     <span class="bar-label">Feb</span>
-                                    <span class="bar-value">$1,200</span>
+                                    <span class="bar-value">£1,200</span>
                                 </div>
                                 <div class="chart-bar" style="height: 45%">
                                     <span class="bar-label">Mar</span>
-                                    <span class="bar-value">$900</span>
+                                    <span class="bar-value">£900</span>
                                 </div>
                                 <div class="chart-bar" style="height: 100%">
                                     <span class="bar-label">Apr</span>
-                                    <span class="bar-value">$2,450</span>
+                                    <span class="bar-value">£2,450</span>
                                 </div>
                             </div>
                         </div>
@@ -720,21 +671,21 @@
                                         <span class="transaction-type">Show Revenue</span>
                                         <span class="transaction-date">Dec 8, 2024</span>
                                     </div>
-                                    <span class="transaction-amount positive">+$150</span>
+                                    <span class="transaction-amount positive">+£150</span>
                                 </div>
                                 <div class="transaction-item">
                                     <div class="transaction-info">
                                         <span class="transaction-type">Payout</span>
                                         <span class="transaction-date">Dec 1, 2024</span>
                                     </div>
-                                    <span class="transaction-amount negative">-$2,000</span>
+                                    <span class="transaction-amount negative">-£2,000</span>
                                 </div>
                                 <div class="transaction-item">
                                     <div class="transaction-info">
                                         <span class="transaction-type">Show Revenue</span>
                                         <span class="transaction-date">Nov 30, 2024</span>
                                     </div>
-                                    <span class="transaction-amount positive">+$300</span>
+                                    <span class="transaction-amount positive">+£300</span>
                                 </div>
                             </div>
                         </div>
@@ -746,18 +697,18 @@
                         <div class="settings-form">
                             <div class="form-group">
                                 <label>Host Name</label>
-                                <input type="text" value="Professional Game Show Host" />
+                                <input type="text" value="Golden Balls Host" />
                             </div>
                             <div class="form-group">
                                 <label>Email</label>
-                                <input type="email" value="host@livegameshow.com" />
+                                <input type="email" value="host@goldenballs.com" />
                             </div>
                             <div class="form-group">
                                 <label>Bio</label>
-                                <textarea rows="3">Experienced game show host with 5+ years of entertainment experience.</textarea>
+                                <textarea rows="3">Experienced Golden Balls host with 5+ years of entertainment experience.</textarea>
                             </div>
                             <div class="form-group">
-                                <label>Default Prize Pool</label>
+                                <label>Default Prize Pool (£)</label>
                                 <input type="number" value="500" />
                             </div>
                             <div class="form-group">

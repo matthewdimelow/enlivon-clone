@@ -1900,3 +1900,37 @@ body {
         padding: 1rem;
     }
 }
+
+/* Admin Access Button */
+.admin-access {
+    position: absolute;
+    bottom: 5px;
+    right: 5px;
+    opacity: 0.1;
+    transition: opacity 0.3s ease;
+}
+
+.admin-access:hover {
+    opacity: 1;
+}
+
+.admin-btn {
+    background: none;
+    border: none;
+    color: #6366f1;
+    font-size: 10px;
+    cursor: pointer;
+    padding: 2px 4px;
+    border-radius: 3px;
+    transition: all 0.3s ease;
+}
+
+.admin-btn:hover {
+    background: rgba(99, 102, 241, 0.1);
+    color: #4f46e5;
+}
+
+/* Make footer-bottom relative for admin button positioning */
+.footer-bottom {
+    position: relative;
+}
