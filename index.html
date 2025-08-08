@@ -393,6 +393,391 @@
         </div>
     </footer>
 
+    <!-- Host Dashboard Modal -->
+    <div id="host-dashboard" class="host-dashboard hidden">
+        <div class="dashboard-container">
+            <div class="dashboard-header">
+                <h2>Host Dashboard</h2>
+                <button class="close-dashboard" onclick="closeHostDashboard()">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            
+            <div class="dashboard-content">
+                <div class="dashboard-sidebar">
+                    <div class="host-profile">
+                        <div class="profile-avatar">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <h3>Host Name</h3>
+                        <p>Professional Game Show Host</p>
+                        <div class="host-stats">
+                            <div class="stat">
+                                <span class="number">1,247</span>
+                                <span class="label">Total Viewers</span>
+                            </div>
+                            <div class="stat">
+                                <span class="number">$2,450</span>
+                                <span class="label">Revenue</span>
+                            </div>
+                            <div class="stat">
+                                <span class="number">4.8★</span>
+                                <span class="label">Rating</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <nav class="dashboard-nav">
+                        <a href="#overview" class="nav-item active" onclick="showDashboardSection('overview')">
+                            <i class="fas fa-chart-line"></i>
+                            Overview
+                        </a>
+                        <a href="#shows" class="nav-item" onclick="showDashboardSection('shows')">
+                            <i class="fas fa-broadcast-tower"></i>
+                            My Shows
+                        </a>
+                        <a href="#schedule" class="nav-item" onclick="showDashboardSection('schedule')">
+                            <i class="fas fa-calendar"></i>
+                            Schedule
+                        </a>
+                        <a href="#earnings" class="nav-item" onclick="showDashboardSection('earnings')">
+                            <i class="fas fa-dollar-sign"></i>
+                            Earnings
+                        </a>
+                        <a href="#settings" class="nav-item" onclick="showDashboardSection('settings')">
+                            <i class="fas fa-cog"></i>
+                            Settings
+                        </a>
+                    </nav>
+                </div>
+                
+                <div class="dashboard-main">
+                    <!-- Overview Section -->
+                    <div id="overview" class="dashboard-section active">
+                        <h3>Dashboard Overview</h3>
+                        <div class="overview-grid">
+                            <div class="overview-card">
+                                <div class="card-header">
+                                    <h4>Live Show</h4>
+                                    <span class="status live">LIVE</span>
+                                </div>
+                                <div class="card-content">
+                                    <h5>Trivia Night</h5>
+                                    <p>342 active players</p>
+                                    <div class="show-controls">
+                                        <button class="btn-control" onclick="controlShow('pause')">
+                                            <i class="fas fa-pause"></i> Pause
+                                        </button>
+                                        <button class="btn-control" onclick="controlShow('end')">
+                                            <i class="fas fa-stop"></i> End
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="overview-card">
+                                <div class="card-header">
+                                    <h4>Next Show</h4>
+                                    <span class="status scheduled">SCHEDULED</span>
+                                </div>
+                                <div class="card-content">
+                                    <h5>Word Master</h5>
+                                    <p>Tomorrow at 8:00 PM</p>
+                                    <div class="show-controls">
+                                        <button class="btn-control" onclick="editShow()">
+                                            <i class="fas fa-edit"></i> Edit
+                                        </button>
+                                        <button class="btn-control" onclick="cancelShow()">
+                                            <i class="fas fa-times"></i> Cancel
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="overview-card">
+                                <div class="card-header">
+                                    <h4>Quick Stats</h4>
+                                </div>
+                                <div class="card-content">
+                                    <div class="quick-stats">
+                                        <div class="stat-item">
+                                            <span class="label">Today's Revenue</span>
+                                            <span class="value">$450</span>
+                                        </div>
+                                        <div class="stat-item">
+                                            <span class="label">Total Shows</span>
+                                            <span class="value">24</span>
+                                        </div>
+                                        <div class="stat-item">
+                                            <span class="label">Avg Rating</span>
+                                            <span class="value">4.8★</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="recent-activity">
+                            <h4>Recent Activity</h4>
+                            <div class="activity-list">
+                                <div class="activity-item">
+                                    <i class="fas fa-play"></i>
+                                    <span>Started "Trivia Night" - 15 minutes ago</span>
+                                </div>
+                                <div class="activity-item">
+                                    <i class="fas fa-dollar-sign"></i>
+                                    <span>Earned $150 from "Word Master" - 2 hours ago</span>
+                                </div>
+                                <div class="activity-item">
+                                    <i class="fas fa-star"></i>
+                                    <span>Received 5-star rating - 3 hours ago</span>
+                                </div>
+                                <div class="activity-item">
+                                    <i class="fas fa-users"></i>
+                                    <span>Peak viewers: 1,247 - 4 hours ago</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Shows Section -->
+                    <div id="shows" class="dashboard-section">
+                        <h3>My Shows</h3>
+                        <div class="shows-list">
+                            <div class="show-item">
+                                <div class="show-info">
+                                    <h4>Trivia Night</h4>
+                                    <p>General Knowledge Quiz</p>
+                                    <span class="show-status live">LIVE NOW</span>
+                                </div>
+                                <div class="show-stats">
+                                    <span>342 players</span>
+                                    <span>$500 prize</span>
+                                </div>
+                                <div class="show-actions">
+                                    <button class="btn-action" onclick="viewShow('trivia')">
+                                        <i class="fas fa-eye"></i> View
+                                    </button>
+                                    <button class="btn-action" onclick="editShow()">
+                                        <i class="fas fa-edit"></i> Edit
+                                    </button>
+                                </div>
+                            </div>
+                            
+                            <div class="show-item">
+                                <div class="show-info">
+                                    <h4>Word Master</h4>
+                                    <p>Word Association Game</p>
+                                    <span class="show-status scheduled">SCHEDULED</span>
+                                </div>
+                                <div class="show-stats">
+                                    <span>Tomorrow 8:00 PM</span>
+                                    <span>$300 prize</span>
+                                </div>
+                                <div class="show-actions">
+                                    <button class="btn-action" onclick="editShow()">
+                                        <i class="fas fa-edit"></i> Edit
+                                    </button>
+                                    <button class="btn-action" onclick="cancelShow()">
+                                        <i class="fas fa-times"></i> Cancel
+                                    </button>
+                                </div>
+                            </div>
+                            
+                            <div class="show-item">
+                                <div class="show-info">
+                                    <h4>Math Challenge</h4>
+                                    <p>Quick Math Puzzles</p>
+                                    <span class="show-status completed">COMPLETED</span>
+                                </div>
+                                <div class="show-stats">
+                                    <span>156 players</span>
+                                    <span>$200 prize</span>
+                                </div>
+                                <div class="show-actions">
+                                    <button class="btn-action" onclick="viewShow('math')">
+                                        <i class="fas fa-eye"></i> View
+                                    </button>
+                                    <button class="btn-action" onclick="duplicateShow()">
+                                        <i class="fas fa-copy"></i> Duplicate
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <button class="btn-primary" onclick="createNewShow()">
+                            <i class="fas fa-plus"></i> Create New Show
+                        </button>
+                    </div>
+                    
+                    <!-- Schedule Section -->
+                    <div id="schedule" class="dashboard-section">
+                        <h3>Schedule</h3>
+                        <div class="schedule-calendar">
+                            <div class="calendar-header">
+                                <button class="btn-calendar" onclick="previousMonth()">
+                                    <i class="fas fa-chevron-left"></i>
+                                </button>
+                                <h4>December 2024</h4>
+                                <button class="btn-calendar" onclick="nextMonth()">
+                                    <i class="fas fa-chevron-right"></i>
+                                </button>
+                            </div>
+                            <div class="calendar-grid">
+                                <!-- Calendar days would be generated by JavaScript -->
+                                <div class="calendar-day scheduled">15</div>
+                                <div class="calendar-day">16</div>
+                                <div class="calendar-day scheduled">17</div>
+                                <div class="calendar-day">18</div>
+                                <div class="calendar-day scheduled">19</div>
+                                <div class="calendar-day">20</div>
+                                <div class="calendar-day">21</div>
+                            </div>
+                        </div>
+                        
+                        <div class="upcoming-shows">
+                            <h4>Upcoming Shows</h4>
+                            <div class="show-schedule">
+                                <div class="scheduled-show">
+                                    <div class="show-time">
+                                        <span class="date">Dec 15</span>
+                                        <span class="time">8:00 PM</span>
+                                    </div>
+                                    <div class="show-details">
+                                        <h5>Trivia Night</h5>
+                                        <p>General Knowledge Quiz</p>
+                                    </div>
+                                    <button class="btn-edit" onclick="editShow()">
+                                        <i class="fas fa-edit"></i>
+                                    </button>
+                                </div>
+                                
+                                <div class="scheduled-show">
+                                    <div class="show-time">
+                                        <span class="date">Dec 17</span>
+                                        <span class="time">7:30 PM</span>
+                                    </div>
+                                    <div class="show-details">
+                                        <h5>Word Master</h5>
+                                        <p>Word Association Game</p>
+                                    </div>
+                                    <button class="btn-edit" onclick="editShow()">
+                                        <i class="fas fa-edit"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Earnings Section -->
+                    <div id="earnings" class="dashboard-section">
+                        <h3>Earnings</h3>
+                        <div class="earnings-overview">
+                            <div class="earnings-card">
+                                <h4>This Month</h4>
+                                <span class="amount">$2,450</span>
+                                <span class="change positive">+15% from last month</span>
+                            </div>
+                            <div class="earnings-card">
+                                <h4>Total Earnings</h4>
+                                <span class="amount">$12,800</span>
+                                <span class="change positive">+23% from last year</span>
+                            </div>
+                            <div class="earnings-card">
+                                <h4>Next Payout</h4>
+                                <span class="amount">$450</span>
+                                <span class="change">Dec 31, 2024</span>
+                            </div>
+                        </div>
+                        
+                        <div class="earnings-chart">
+                            <h4>Earnings History</h4>
+                            <div class="chart-container">
+                                <div class="chart-bar" style="height: 60%">
+                                    <span class="bar-label">Jan</span>
+                                    <span class="bar-value">$800</span>
+                                </div>
+                                <div class="chart-bar" style="height: 80%">
+                                    <span class="bar-label">Feb</span>
+                                    <span class="bar-value">$1,200</span>
+                                </div>
+                                <div class="chart-bar" style="height: 45%">
+                                    <span class="bar-label">Mar</span>
+                                    <span class="bar-value">$900</span>
+                                </div>
+                                <div class="chart-bar" style="height: 100%">
+                                    <span class="bar-label">Apr</span>
+                                    <span class="bar-value">$2,450</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="recent-transactions">
+                            <h4>Recent Transactions</h4>
+                            <div class="transaction-list">
+                                <div class="transaction-item">
+                                    <div class="transaction-info">
+                                        <span class="transaction-type">Show Revenue</span>
+                                        <span class="transaction-date">Dec 8, 2024</span>
+                                    </div>
+                                    <span class="transaction-amount positive">+$150</span>
+                                </div>
+                                <div class="transaction-item">
+                                    <div class="transaction-info">
+                                        <span class="transaction-type">Payout</span>
+                                        <span class="transaction-date">Dec 1, 2024</span>
+                                    </div>
+                                    <span class="transaction-amount negative">-$2,000</span>
+                                </div>
+                                <div class="transaction-item">
+                                    <div class="transaction-info">
+                                        <span class="transaction-type">Show Revenue</span>
+                                        <span class="transaction-date">Nov 30, 2024</span>
+                                    </div>
+                                    <span class="transaction-amount positive">+$300</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Settings Section -->
+                    <div id="settings" class="dashboard-section">
+                        <h3>Settings</h3>
+                        <div class="settings-form">
+                            <div class="form-group">
+                                <label>Host Name</label>
+                                <input type="text" value="Professional Game Show Host" />
+                            </div>
+                            <div class="form-group">
+                                <label>Email</label>
+                                <input type="email" value="host@livegameshow.com" />
+                            </div>
+                            <div class="form-group">
+                                <label>Bio</label>
+                                <textarea rows="3">Experienced game show host with 5+ years of entertainment experience.</textarea>
+                            </div>
+                            <div class="form-group">
+                                <label>Default Prize Pool</label>
+                                <input type="number" value="500" />
+                            </div>
+                            <div class="form-group">
+                                <label>Show Duration (minutes)</label>
+                                <input type="number" value="30" />
+                            </div>
+                            <div class="form-group">
+                                <label>Auto-schedule shows</label>
+                                <input type="checkbox" checked />
+                            </div>
+                            <button class="btn-primary" onclick="saveSettings()">
+                                Save Settings
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <script src="script.js"></script>
 </body>
 </html>
