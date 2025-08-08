@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LiveGameShow - Interactive Live Game Shows</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <h2>LiveGameShow</h2>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#shows">Live Shows</a></li>
+                <li><a href="#games">Games</a></li>
+                <li><a href="#host">Host</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <div class="nav-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1>Experience Live Interactive Game Shows</h1>
+                <p>Join thousands of players in real-time interactive game shows. Compete, win prizes, and have fun with hosts and fellow players from around the world.</p>
+                <div class="hero-buttons">
+                    <button class="btn-primary" onclick="joinShow()">Join Live Show</button>
+                    <button class="btn-secondary" onclick="hostShow()">Host a Show</button>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <div class="game-show-preview">
+                    <div class="live-indicator">
+                        <span class="pulse"></span>
+                        LIVE
+                    </div>
+                    <div class="show-stats">
+                        <div class="stat">
+                            <span class="number">1,247</span>
+                            <span class="label">Players Online</span>
+                        </div>
+                        <div class="stat">
+                            <span class="number">5</span>
+                            <span class="label">Active Shows</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="hero-background">
+            <div class="gradient-1"></div>
+            <div class="gradient-2"></div>
+            <div class="gradient-3"></div>
+        </div>
+    </section>
+
+    <!-- Live Shows Section -->
+    <section id="shows" class="live-shows">
+        <div class="container">
+            <h2>Live Shows Now</h2>
+            <div class="shows-grid">
+                <div class="show-card active">
+                    <div class="show-header">
+                        <div class="live-badge">LIVE</div>
+                        <h3>Trivia Night</h3>
+                        <p>General Knowledge Quiz</p>
+                    </div>
+                    <div class="show-stats">
+                        <span><i class="fas fa-users"></i> 342 players</span>
+                        <span><i class="fas fa-trophy"></i> $500 prize</span>
+                    </div>
+                    <button class="join-btn" onclick="joinSpecificShow('trivia')">Join Now</button>
+                </div>
+                
+                <div class="show-card">
+                    <div class="show-header">
+                        <div class="live-badge">LIVE</div>
+                        <h3>Word Master</h3>
+                        <p>Word Association Game</p>
+                    </div>
+                    <div class="show-stats">
+                        <span><i class="fas fa-users"></i> 189 players</span>
+                        <span><i class="fas fa-trophy"></i> $300 prize</span>
+                    </div>
+                    <button class="join-btn" onclick="joinSpecificShow('word')">Join Now</button>
+                </div>
+                
+                <div class="show-card">
+                    <div class="show-header">
+                        <div class="live-badge">LIVE</div>
+                        <h3>Math Challenge</h3>
+                        <p>Quick Math Puzzles</p>
+                    </div>
+                    <div class="show-stats">
+                        <span><i class="fas fa-users"></i> 156 players</span>
+                        <span><i class="fas fa-trophy"></i> $200 prize</span>
+                    </div>
+                    <button class="join-btn" onclick="joinSpecificShow('math')">Join Now</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Game Interface -->
+    <section id="game-interface" class="game-interface hidden">
+        <div class="game-container">
+            <div class="game-header">
+                <div class="game-info">
+                    <h2 id="game-title">Trivia Night</h2>
+                    <div class="game-stats">
+                        <span><i class="fas fa-users"></i> <span id="player-count">342</span> players</span>
+                        <span><i class="fas fa-clock"></i> <span id="time-left">30</span>s</span>
+                    </div>
+                </div>
+                <button class="close-game" onclick="closeGame()">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            
+            <div class="game-content">
+                <div class="question-area">
+                    <h3 id="current-question">What is the capital of France?</h3>
+                    <div class="options-grid">
+                        <button class="option-btn" onclick="selectAnswer('A')">A) London</button>
+                        <button class="option-btn" onclick="selectAnswer('B')">B) Paris</button>
+                        <button class="option-btn" onclick="selectAnswer('C')">C) Berlin</button>
+                        <button class="option-btn" onclick="selectAnswer('D')">D) Madrid</button>
+                    </div>
+                </div>
+                
+                <div class="leaderboard">
+                    <h4>Leaderboard</h4>
+                    <div class="leaderboard-list">
+                        <div class="leaderboard-item">
+                            <span class="rank">1</span>
+                            <span class="player">Player123</span>
+                            <span class="score">850 pts</span>
+                        </div>
+                        <div class="leaderboard-item">
+                            <span class="rank">2</span>
+                            <span class="player">QuizMaster</span>
+                            <span class="score">720 pts</span>
+                        </div>
+                        <div class="leaderboard-item">
+                            <span class="rank">3</span>
+                            <span class="player">BrainBox</span>
+                            <span class="score">680 pts</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="chat-section">
+                <div class="chat-header">
+                    <h4>Live Chat</h4>
+                </div>
+                <div class="chat-messages" id="chat-messages">
+                    <div class="chat-message">
+                        <span class="username">Host:</span>
+                        <span class="message">Welcome everyone! Let's get started!</span>
+                    </div>
+                    <div class="chat-message">
+                        <span class="username">Player123:</span>
+                        <span class="message">Ready to win! 🏆</span>
+                    </div>
+                </div>
+                <div class="chat-input">
+                    <input type="text" id="chat-input" placeholder="Type your message...">
+                    <button onclick="sendMessage()">Send</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Games Section -->
+    <section id="games" class="games">
+        <div class="container">
+            <h2>Available Games</h2>
+            <div class="games-grid">
+                <div class="game-card">
+                    <div class="game-icon">
+                        <i class="fas fa-question-circle"></i>
+                    </div>
+                    <h3>Trivia</h3>
+                    <p>Test your knowledge across various categories</p>
+                    <ul>
+                        <li>Multiple choice questions</li>
+                        <li>Real-time scoring</li>
+                        <li>Prize pools up to $1000</li>
+                    </ul>
+                </div>
+                
+                <div class="game-card">
+                    <div class="game-icon">
+                        <i class="fas fa-font"></i>
+                    </div>
+                    <h3>Word Master</h3>
+                    <p>Word association and vocabulary challenges</p>
+                    <ul>
+                        <li>Word puzzles</li>
+                        <li>Anagram challenges</li>
+                        <li>Vocabulary building</li>
+                    </ul>
+                </div>
+                
+                <div class="game-card">
+                    <div class="game-icon">
+                        <i class="fas fa-calculator"></i>
+                    </div>
+                    <h3>Math Challenge</h3>
+                    <p>Quick mental math and logic puzzles</p>
+                    <ul>
+                        <li>Mental arithmetic</li>
+                        <li>Logic problems</li>
+                        <li>Speed challenges</li>
+                    </ul>
+                </div>
+                
+                <div class="game-card">
+                    <div class="game-icon">
+                        <i class="fas fa-puzzle-piece"></i>
+                    </div>
+                    <h3>Puzzle Master</h3>
+                    <p>Visual and logic puzzle challenges</p>
+                    <ul>
+                        <li>Visual puzzles</li>
+                        <li>Logic problems</li>
+                        <li>Pattern recognition</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Host Section -->
+    <section id="host" class="host-section">
+        <div class="container">
+            <h2>Host Your Own Show</h2>
+            <div class="host-content">
+                <div class="host-info">
+                    <h3>Become a Game Show Host</h3>
+                    <p>Create and host your own interactive game shows. Engage with audiences worldwide and earn money while having fun.</p>
+                    <div class="host-features">
+                        <div class="feature">
+                            <i class="fas fa-broadcast-tower"></i>
+                            <h4>Live Streaming</h4>
+                            <p>Stream your shows in HD quality</p>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-users"></i>
+                            <h4>Audience Management</h4>
+                            <p>Manage thousands of participants</p>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-dollar-sign"></i>
+                            <h4>Monetization</h4>
+                            <p>Earn from ticket sales and sponsorships</p>
+                        </div>
+                    </div>
+                    <button class="btn-primary" onclick="becomeHost()">Become a Host</button>
+                </div>
+                <div class="host-visual">
+                    <div class="host-dashboard-preview">
+                        <div class="dashboard-header">
+                            <h4>Host Dashboard</h4>
+                        </div>
+                        <div class="dashboard-content">
+                            <div class="metric">
+                                <span class="metric-value">1,247</span>
+                                <span class="metric-label">Viewers</span>
+                            </div>
+                            <div class="metric">
+                                <span class="metric-value">$2,450</span>
+                                <span class="metric-label">Revenue</span>
+                            </div>
+                            <div class="metric">
+                                <span class="metric-value">4.8★</span>
+                                <span class="metric-label">Rating</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <h2>About LiveGameShow</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>LiveGameShow is the premier platform for interactive live game shows. We connect hosts with audiences worldwide, creating engaging entertainment experiences that bring people together through fun and competition.</p>
+                    <div class="stats">
+                        <div class="stat">
+                            <span class="number">50,000+</span>
+                            <span class="label">Active Players</span>
+                        </div>
+                        <div class="stat">
+                            <span class="number">1,000+</span>
+                            <span class="label">Shows Hosted</span>
+                        </div>
+                        <div class="stat">
+                            <span class="number">$500K+</span>
+                            <span class="label">Prizes Awarded</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2>Get in Touch</h2>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <h3>Contact Us</h3>
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <span>support@livegameshow.com</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <span>+1 (555) 123-4567</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>123 Game Street, Entertainment City</span>
+                    </div>
+                </div>
+                <form class="contact-form">
+                    <input type="text" placeholder="Your Name" required>
+                    <input type="email" placeholder="Your Email" required>
+                    <textarea placeholder="Your Message" rows="5" required></textarea>
+                    <button type="submit" class="btn-primary">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>LiveGameShow</h3>
+                    <p>Connecting the world through interactive entertainment.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#shows">Live Shows</a></li>
+                        <li><a href="#games">Games</a></li>
+                        <li><a href="#host">Host</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Support</h4>
+                    <ul>
+                        <li><a href="#">Help Center</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 LiveGameShow. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
