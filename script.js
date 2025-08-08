@@ -108,6 +108,10 @@ function initializeApp() {
             openSignUp();
         }
     }, 1000);
+    
+    // Initialize features section
+    initializeFeatures();
+    
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
@@ -991,6 +995,96 @@ function saveSettings() {
     showNotification('Settings saved successfully', 'success');
 }
 
+// Features Section Dynamic Functionality
+function initializeFeatures() {
+    const featureCards = document.querySelectorAll('.feature-card');
+    
+    // Add intersection observer for feature cards
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.style.animationPlayState = 'running';
+                
+                // Add hover effects and interactions
+                entry.target.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-10px) scale(1.02)';
+                    this.style.boxShadow = '0 20px 40px rgba(99, 102, 241, 0.2)';
+                });
+                
+                entry.target.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0) scale(1)';
+                    this.style.boxShadow = '0 8px 32px rgba(0, 0, 0, 0.1)';
+                });
+                
+                // Add click interaction
+                entry.target.addEventListener('click', function() {
+                    const featureType = this.getAttribute('data-feature');
+                    showFeatureDetails(featureType);
+                });
+            }
+        });
+    }, { threshold: 0.3 });
+    
+    featureCards.forEach(card => {
+        observer.observe(card);
+        card.style.animationPlayState = 'paused';
+    });
+}
+
+function showFeatureDetails(featureType) {
+    const featureInfo = {
+        interactive: {
+            title: 'Interactive Gameshows',
+            description: 'Experience the thrill of live interactive game shows with real-time audience participation, dynamic decision-making, and immersive gameplay that keeps you on the edge of your seat.',
+            highlights: ['Live audience interaction', 'Real-time decision making', 'Dynamic gameplay mechanics', 'Immersive experience']
+        },
+        talent: {
+            title: 'Top Talent',
+            description: 'Our roster features the most charismatic and experienced presenters in the industry, each bringing their unique style and energy to create unforgettable entertainment experiences.',
+            highlights: ['Professional presenters', 'Charismatic hosts', 'Experienced entertainers', 'Unique personalities']
+        },
+        prizes: {
+            title: 'Real Prizes',
+            description: 'Win genuine rewards and prizes that make every game worth playing. From cash prizes to exclusive experiences, we ensure every winner walks away with something valuable.',
+            highlights: ['Cash prizes', 'Exclusive experiences', 'Valuable rewards', 'Genuine winnings']
+        },
+        variety: {
+            title: 'Variety',
+            description: 'From classic game show formats to innovative new concepts, we offer a diverse range of entertainment options to suit every mood and preference.',
+            highlights: ['Multiple game formats', 'Different difficulty levels', 'Various themes', 'Something for everyone']
+        },
+        community: {
+            title: 'Community',
+            description: 'Join a vibrant community of game show enthusiasts where friendships are formed, strategies are shared, and everyone is welcome to participate and have fun.',
+            highlights: ['Vibrant community', 'Social interaction', 'Strategy sharing', 'Inclusive environment']
+        }
+    };
+    
+    const info = featureInfo[featureType];
+    if (info) {
+        showNotification(`${info.title}: ${info.description}`, 'info');
+        
+        // Create a dynamic highlight display
+        setTimeout(() => {
+            const highlights = info.highlights.join(' • ');
+            showNotification(`Key highlights: ${highlights}`, 'success');
+        }, 2000);
+    }
+}
+
+function animateFeatureNumbers() {
+    const featureNumbers = document.querySelectorAll('.feature-number');
+    
+    featureNumbers.forEach((number, index) => {
+        setTimeout(() => {
+            number.style.transform = 'scale(1.2) rotate(360deg)';
+            setTimeout(() => {
+                number.style.transform = 'scale(1) rotate(0deg)';
+            }, 300);
+        }, index * 200);
+    });
+}
+
 // Export functions for global access
 window.joinShow = joinShow;
 window.hostShow = hostShow;
@@ -1021,3 +1115,6 @@ window.duplicateShow = duplicateShow;
 window.previousMonth = previousMonth;
 window.nextMonth = nextMonth;
 window.saveSettings = saveSettings;
+window.initializeFeatures = initializeFeatures;
+window.showFeatureDetails = showFeatureDetails;
+window.animateFeatureNumbers = animateFeatureNumbers;
