@@ -21,6 +21,7 @@
                 <li><a href="#games">Games</a></li>
                 <li><a href="#about">About</a></li>
                 <li><a href="#contact">Contact</a></li>
+                <li><a href="#" onclick="openSignUp()" class="signup-link">Sign Up</a></li>
             </ul>
             <div class="nav-toggle">
                 <span></span>
@@ -361,6 +362,87 @@
             </div>
         </div>
     </footer>
+
+    <!-- Sign Up Modal -->
+    <div id="signup-modal" class="signup-modal hidden">
+        <div class="signup-container">
+            <div class="signup-header">
+                <h2>Join LiveGamePlatform</h2>
+                <button class="close-signup" onclick="closeSignUp()">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="signup-content">
+                <div class="signup-form">
+                    <div class="form-group">
+                        <label for="signup-username">Username</label>
+                        <input type="text" id="signup-username" placeholder="Choose a username" />
+                    </div>
+                    <div class="form-group">
+                        <label for="signup-email">Email</label>
+                        <input type="email" id="signup-email" placeholder="Enter your email" />
+                    </div>
+                    <div class="form-group">
+                        <label for="signup-password">Password</label>
+                        <input type="password" id="signup-password" placeholder="Create a password" />
+                    </div>
+                    <div class="form-group">
+                        <label for="signup-confirm-password">Confirm Password</label>
+                        <input type="password" id="signup-confirm-password" placeholder="Confirm your password" />
+                    </div>
+                    <div class="form-group">
+                        <label for="signup-age">Age</label>
+                        <input type="number" id="signup-age" placeholder="Enter your age" min="13" max="120" />
+                    </div>
+                    <div class="form-group">
+                        <label for="signup-country">Country</label>
+                        <select id="signup-country">
+                            <option value="">Select your country</option>
+                            <option value="UK">United Kingdom</option>
+                            <option value="US">United States</option>
+                            <option value="CA">Canada</option>
+                            <option value="AU">Australia</option>
+                            <option value="DE">Germany</option>
+                            <option value="FR">France</option>
+                            <option value="ES">Spain</option>
+                            <option value="IT">Italy</option>
+                            <option value="NL">Netherlands</option>
+                            <option value="SE">Sweden</option>
+                            <option value="NO">Norway</option>
+                            <option value="DK">Denmark</option>
+                            <option value="FI">Finland</option>
+                            <option value="CH">Switzerland</option>
+                            <option value="AT">Austria</option>
+                            <option value="BE">Belgium</option>
+                            <option value="IE">Ireland</option>
+                            <option value="NZ">New Zealand</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                    <div class="form-group checkbox-group">
+                        <input type="checkbox" id="signup-terms" />
+                        <label for="signup-terms">I agree to the <a href="#" onclick="showTerms()">Terms of Service</a> and <a href="#" onclick="showPrivacy()">Privacy Policy</a></label>
+                    </div>
+                    <div class="form-group checkbox-group">
+                        <input type="checkbox" id="signup-newsletter" />
+                        <label for="signup-newsletter">I want to receive updates about new shows and special events</label>
+                    </div>
+                    <div class="signup-actions">
+                        <button class="btn-primary" onclick="submitSignUp()">
+                            <i class="fas fa-user-plus"></i> Create Account
+                        </button>
+                        <button class="btn-secondary" onclick="closeSignUp()">
+                            Cancel
+                        </button>
+                    </div>
+                    <div class="signup-status" id="signup-status"></div>
+                    <div class="signup-footer">
+                        <p>Already have an account? <a href="#" onclick="openLogin()">Sign In</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- Admin Login Modal -->
     <div id="admin-login" class="admin-login hidden">

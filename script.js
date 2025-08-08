@@ -154,6 +154,12 @@ function setupEventListeners() {
     if (adminPassword) {
         adminPassword.addEventListener('keypress', handleLoginKeyPress);
     }
+
+    // Sign up form event listeners
+    const signupInputs = document.querySelectorAll('#signup-modal input');
+    signupInputs.forEach(input => {
+        input.addEventListener('keypress', handleSignUpKeyPress);
+    });
 }
 
 // Start live stats updates
@@ -247,6 +253,150 @@ function loginAdmin() {
 function handleLoginKeyPress(event) {
     if (event.key === 'Enter') {
         loginAdmin();
+    }
+}
+
+// Sign Up Functions
+function openSignUp() {
+    const signupModal = document.getElementById('signup-modal');
+    if (signupModal) {
+        signupModal.classList.remove('hidden');
+        document.body.style.overflow = 'hidden';
+        // Focus on username field
+        document.getElementById('signup-username').focus();
+    }
+}
+
+function closeSignUp() {
+    const signupModal = document.getElementById('signup-modal');
+    if (signupModal) {
+        signupModal.classList.add('hidden');
+        document.body.style.overflow = '';
+        // Clear form
+        clearSignUpForm();
+    }
+}
+
+function clearSignUpForm() {
+    const form = document.getElementById('signup-modal');
+    if (form) {
+        form.querySelectorAll('input').forEach(input => {
+            if (input.type === 'checkbox') {
+                input.checked = false;
+            } else {
+                input.value = '';
+            }
+        });
+        form.querySelector('select').value = '';
+        document.getElementById('signup-status').innerHTML = '';
+        document.getElementById('signup-status').className = 'signup-status';
+    }
+}
+
+function submitSignUp() {
+    const username = document.getElementById('signup-username').value.trim();
+    const email = document.getElementById('signup-email').value.trim();
+    const password = document.getElementById('signup-password').value;
+    const confirmPassword = document.getElementById('signup-confirm-password').value;
+    const age = document.getElementById('signup-age').value;
+    const country = document.getElementById('signup-country').value;
+    const termsAccepted = document.getElementById('signup-terms').checked;
+    const newsletterSubscribed = document.getElementById('signup-newsletter').checked;
+    
+    const signupStatus = document.getElementById('signup-status');
+    
+    // Validation
+    if (!username || !email || !password || !confirmPassword || !age || !country) {
+        signupStatus.innerHTML = '<i class="fas fa-exclamation-circle"></i> Please fill in all required fields';
+        signupStatus.className = 'signup-status error';
+        return;
+    }
+    
+    if (username.length < 3) {
+        signupStatus.innerHTML = '<i class="fas fa-exclamation-circle"></i> Username must be at least 3 characters long';
+        signupStatus.className = 'signup-status error';
+        return;
+    }
+    
+    if (!isValidEmail(email)) {
+        signupStatus.innerHTML = '<i class="fas fa-exclamation-circle"></i> Please enter a valid email address';
+        signupStatus.className = 'signup-status error';
+        return;
+    }
+    
+    if (password.length < 6) {
+        signupStatus.innerHTML = '<i class="fas fa-exclamation-circle"></i> Password must be at least 6 characters long';
+        signupStatus.className = 'signup-status error';
+        return;
+    }
+    
+    if (password !== confirmPassword) {
+        signupStatus.innerHTML = '<i class="fas fa-exclamation-circle"></i> Passwords do not match';
+        signupStatus.className = 'signup-status error';
+        return;
+    }
+    
+    if (age < 13 || age > 120) {
+        signupStatus.innerHTML = '<i class="fas fa-exclamation-circle"></i> Age must be between 13 and 120';
+        signupStatus.className = 'signup-status error';
+        return;
+    }
+    
+    if (!termsAccepted) {
+        signupStatus.innerHTML = '<i class="fas fa-exclamation-circle"></i> You must accept the Terms of Service';
+        signupStatus.className = 'signup-status error';
+        return;
+    }
+    
+    // Simulate successful registration
+    signupStatus.innerHTML = '<i class="fas fa-check-circle"></i> Account created successfully! Welcome to LiveGamePlatform!';
+    signupStatus.className = 'signup-status success';
+    
+    // Store user data (in a real app, this would be sent to a server)
+    const userData = {
+        username: username,
+        email: email,
+        age: age,
+        country: country,
+        newsletterSubscribed: newsletterSubscribed,
+        createdAt: new Date().toISOString()
+    };
+    
+    // Store in localStorage for demo purposes
+    localStorage.setItem('userData', JSON.stringify(userData));
+    
+    // Show success notification
+    showNotification('Welcome to LiveGamePlatform! Your account has been created successfully.', 'success');
+    
+    // Close modal after a delay
+    setTimeout(() => {
+        closeSignUp();
+    }, 2000);
+}
+
+function isValidEmail(email) {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+}
+
+function openLogin() {
+    // For now, just close signup and show a message
+    closeSignUp();
+    showNotification('Login functionality coming soon!', 'info');
+}
+
+function showTerms() {
+    showNotification('Terms of Service: By using LiveGamePlatform, you agree to our terms and conditions.', 'info');
+}
+
+function showPrivacy() {
+    showNotification('Privacy Policy: We respect your privacy and protect your personal information.', 'info');
+}
+
+// Handle Enter key in signup form
+function handleSignUpKeyPress(event) {
+    if (event.key === 'Enter') {
+        submitSignUp();
     }
 }
 
@@ -826,6 +976,13 @@ window.openAdminLogin = openAdminLogin;
 window.closeAdminLogin = closeAdminLogin;
 window.loginAdmin = loginAdmin;
 window.handleLoginKeyPress = handleLoginKeyPress;
+window.openSignUp = openSignUp;
+window.closeSignUp = closeSignUp;
+window.submitSignUp = submitSignUp;
+window.openLogin = openLogin;
+window.showTerms = showTerms;
+window.showPrivacy = showPrivacy;
+window.handleSignUpKeyPress = handleSignUpKeyPress;
 window.joinSpecificShow = joinSpecificShow;
 window.closeGame = closeGame;
 window.sendMessage = sendMessage;
